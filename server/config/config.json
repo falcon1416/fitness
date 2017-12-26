@@ -1,0 +1,38 @@
+{
+    "website-db":{
+        "ssh":{
+            "username":"root",
+            "host": "121.43.104.142",
+            "port": "13659",
+            "dstHost": "118.31.8.147",
+            "dstPort": "3306",
+            "localHost":"localhost",
+            "localPort": 3306
+        },
+        "db":{
+            "host": "localhost",
+            "port": 3306,
+            "user": "root",
+            "password": "aqmbf123456",
+            "database":"aiqiumi_league"
+        }
+    },
+    "aiqiumi-db":{
+        "ssh":{
+            "username":"root",
+            "host": "121.43.104.142",
+            "port": "13659",
+            "dstHost": "10.47.125.233",
+            "dstPort": "10320",
+            "localHost":"localhost",
+            "localPort": 10320
+        },
+        "db":{
+            "host": "localhost",
+            "port": 10320,
+            "user": "aiqiumi_read",
+            "password": "JKSDxs890!#012",
+            "database":"aiqiumi_v40"
+        }
+    }
+}
