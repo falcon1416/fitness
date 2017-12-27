@@ -1,20 +1,15 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import App from './App'
-import router from './router'
+import Vonic from 'vonic'
 
-import MintUI from 'mint-ui'
-import 'mint-ui/lib/style.css'
+// Page Components
+import List from './pages/type/List.vue'
 
-Vue.use(MintUI)
+// Routes
+const routes = {
+  '/': {
+    component: List
+  }
+}
 
-Vue.config.productionTip = false
+Vue.use(Vonic.app, {mode: 'history', routes: routes, defaultRouteUrl: '/'})
 
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  template: '<App/>',
-  components: { App }
-})
