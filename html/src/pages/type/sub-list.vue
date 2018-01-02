@@ -33,8 +33,8 @@
 		},
 		methods: {
 			onAdd: function () {
+				bus.$emit('type-list', { parent_id: this.parent_id, modal: this.modal });
 				this.modal.show();
-				bus.$emit('type-list', { parent_id: this.parent_id,modal:this.modal });
 			},
 			onDel: function (item) {
 				//删除
@@ -56,6 +56,7 @@
 						'添加': () => {
 							self.onAdd();
 						},
+
 						'删除': () => {
 							self.is_del = 1;
 						}
@@ -64,6 +65,8 @@
 			}
 		},
 		created() {
+			this.parent_id = this.$route.query.parent_id
+
 			listenEvent(this);
 			loadData(this);
 		},
@@ -79,7 +82,7 @@
 	};
 
 	function loadData(self) {
-		self.$api.post("SYS_TYPE_URL", {}, function (code, message, info) {
+		self.$api.post("SYS_TYPE_URL", { parent_id: self.parent_id }, function (code, message, info) {
 			if (code == 200) {
 				self.list = info;
 			}
@@ -110,6 +113,7 @@
 		//强制刷新界面
 		self.$forceUpdate();
 	}
+
 
 	//监听事件
 	function listenEvent(self) {

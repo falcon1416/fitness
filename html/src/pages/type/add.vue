@@ -11,17 +11,52 @@
 
 
 <script>
+	import bus from '../../components/Bus'
 	export default {
 		data() {
 			return {
 				value: '',
-				parent_id:0,
+				parent_id: 0,
+
+				modal:null,
 			}
 		},
+		mounted() {
+			listenEvent(this);
+		},
 		methods: {
-			onSave:function(){
-				console.log(this);
+			onSave: function () {
+				if(this.value.length==0) return;
+
+				saveData(this);
 			}
 		}
+	}
+
+
+	//监听事件
+	function listenEvent(self) {
+		bus.$on('type-list', function (data) {
+			if(data){
+				self.value='';
+				
+				self.parent_id=data.parent_id;
+				self.modal=data.modal;
+			}
+		});
+	}
+
+	//添加事件
+	function saveData(self){
+		self.$api.post("ADD_SYS_TYPE_URL", {parent_id:self.parent_id,name:self.value}, function (code, message, info) {
+			if (code == 200) {
+				//关闭界面
+				if(self.modal){
+					self.modal.hide();
+				}
+
+				bus.$emit('close-type-list', { is_done:true });
+			}
+		});
 	}
 </script>

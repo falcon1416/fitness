@@ -23,7 +23,8 @@ import Vue from 'vue'
 import Vonic from 'vonic/src/index.js'
 
 // Page Components
-import List from './pages/type/List.vue'
+import TypeList from './pages/type/list.vue'
+import SubList from './pages/type/sub-list.vue'
 
 // 引用API文件
 import api from './utils/api.js'
@@ -32,7 +33,8 @@ Vue.prototype.$api = api
 
 // Routes
 const routes = [
-  { path: '/', component: List },
+  { path: '/', component: TypeList },
+  { path: '/sub-list', component: SubList },
 ]
 
 Vue.use(Vonic.app, {

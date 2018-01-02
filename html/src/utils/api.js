@@ -3,6 +3,10 @@ import $ from 'jquery'
 var json = {
     //类型
     "SYS_TYPE_URL": "/api/sys/allType",
+    //添加类型
+    "ADD_SYS_TYPE_URL": "/api/sys/addType",
+    //删除类型
+    "DEL_SYS_TYPE_URL": "/api/sys/delType",
 }
 
 function post(key, data, cb) {
@@ -28,10 +32,10 @@ function post(key, data, cb) {
             var obj = data;
             console.log(obj);
             if (obj.code == 200) {
-                cb(obj.code, obj.message, obj.info);
+                cb(obj.code, obj.err, obj.info);
             } else {
-                $.toast(message);
-                cb(obj.code, message, null)
+                $toast.show(obj.err, 2000)
+                cb(obj.code, obj.err, null)
             }
         },
     });
