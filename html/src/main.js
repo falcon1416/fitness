@@ -23,8 +23,10 @@ import Vue from 'vue'
 import Vonic from 'vonic/src/index.js'
 
 // Page Components
-import TypeList from './pages/type/list.vue'
-import SubList from './pages/type/sub-list.vue'
+import Setting from './pages/setting/setting.vue'
+import SetType from './pages/set-type/set-type.vue'
+import SetSubType from './pages/set-type/set-sub-type.vue'
+import SetMotion from './pages/set-motion/set-motion.vue'
 
 // 引用API文件
 import api from './utils/api.js'
@@ -33,8 +35,10 @@ Vue.prototype.$api = api
 
 // Routes
 const routes = [
-  { path: '/', component: TypeList },
-  { path: '/sub-list', component: SubList },
+  { path: '/setting', component: Setting },
+  { path: '/set-type', component: SetType },
+  { path: '/set-sub-type', component: SetSubType },
+  { path: '/set-motion', component: SetMotion },
 ]
 
 Vue.use(Vonic.app, {

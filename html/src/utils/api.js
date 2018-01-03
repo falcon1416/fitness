@@ -1,12 +1,19 @@
 import $ from 'jquery'
 
 var json = {
-    //类型
+    //训练类型
     "SYS_TYPE_URL": "/api/sys/allType",
-    //添加类型
+    //添加训练类型
     "ADD_SYS_TYPE_URL": "/api/sys/addType",
-    //删除类型
+    //删除训练类型
     "DEL_SYS_TYPE_URL": "/api/sys/delType",
+
+    //训练动作
+    "SYS_MOTION_URL": "/api/sys/allMotion",
+    //添加训练动作
+    "ADD_SYS_MOTION_URL": "/api/sys/addMotion",
+    //删除训练动作
+    "DEL_SYS_MOTION_URL": "/api/sys/delMotion",
 }
 
 function post(key, data, cb) {

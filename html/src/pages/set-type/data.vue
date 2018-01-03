@@ -1,5 +1,5 @@
 <template>
-	<div class="page has-navbar" v-nav="{title: '类型', showBackButton: false,showMenuButton:true,menuButtonText:menuButtonText,onMenuButtonClick:onShowPopup}">
+	<div class="page has-navbar" v-nav="{title: '类型', showBackButton: true,showMenuButton:true,menuButtonText:menuButtonText,onMenuButtonClick:onShowPopup}">
 		<div class="page-content">
 			<!--数据列表-->
 			<list class="list-ios">
@@ -36,7 +36,7 @@
 		methods: {
 			onAdd: function () {
 				this.modal.show();
-				bus.$emit("type-list", { parent_id: this.parent_id, modal: this.modal });
+				bus.$emit("set-type", { parent_id: this.parent_id, modal: this.modal });
 			},
 			onDel: function (item) {
 				//删除
@@ -44,7 +44,7 @@
 			},
 			onListClick: function (item) {
 				//点击
-				this.$router.push({ path: "/sub-list", query: { parent_id: item.id } });
+				this.$router.push({ path: "/set-sub-type", query: { parent_id: item.id } });
 			},
 			//显示弹框
 			onShowPopup() {
@@ -121,7 +121,7 @@
 
 	//监听事件
 	function listenEvent(self) {
-		bus.$on("close-type-list", function (data) {
+		bus.$on("close-set-type", function (data) {
 			if (data) {
 				if (data.is_done == true) {
 					//刷新数据

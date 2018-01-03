@@ -36,7 +36,7 @@
 
 	//监听事件
 	function listenEvent(self) {
-		bus.$on('type-list', function (data) {
+		bus.$on('set-type', function (data) {
 			if(data){
 				self.value='';
 				
@@ -55,7 +55,7 @@
 					self.modal.hide();
 				}
 
-				bus.$emit('close-type-list', { is_done:true });
+				bus.$emit('close-set-type', { is_done:true });
 			}
 		});
 	}
