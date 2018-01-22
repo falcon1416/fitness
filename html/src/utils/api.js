@@ -18,7 +18,8 @@ var json = {
 
 function post(key, data, cb) {
     let url;
-    url = "http://localhost:3000"+ json[key];
+    //url = "http://localhost:3000"+ json[key];
+    url = "http://120.26.202.7:3000"+ json[key];
     
     var token ="";
 

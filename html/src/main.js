@@ -35,7 +35,7 @@ Vue.prototype.$api = api
 
 // Routes
 const routes = [
-  { path: '/setting', component: Setting },
+  { path: '/', component: Setting },
   { path: '/set-type', component: SetType },
   { path: '/set-sub-type', component: SetSubType },
   { path: '/set-motion', component: SetMotion },
