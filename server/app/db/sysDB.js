@@ -12,7 +12,6 @@ class SysDB {
             //查询所有类型,如果有子类型，就过滤父类型
             let sql = "select * from sys_type where parent_id!=0 and status=1 ";
             let sub_list = await db.run(sql);
-
             let parent_ids = "-1";
             for (let i = 0; i < sub_list.length; i++) {
                 parent_ids += "," + sub_list[i].parent_id;
@@ -54,6 +53,7 @@ class SysDB {
     async queryAllMotion(type) {
         let sql = "select * from sys_motion where status=1 ";
         let list = await db.run(sql);
+
         return list;
     }
 

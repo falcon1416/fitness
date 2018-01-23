@@ -11,3 +11,15 @@
 .van-cell-swipe__right {
     background-color: #df0707;
 }
+
+
+.van-panel__footer {
+    text-align: right;
+    .van-button {
+        margin-left: 5px;
+    }
+}
+
+.van-panel__content {
+    padding: 20px;
+}

@@ -14,6 +14,11 @@ var json = {
     "ADD_SYS_MOTION_URL": "/api/sys/addMotion",
     //删除训练动作
     "DEL_SYS_MOTION_URL": "/api/sys/delMotion",
+
+
+    "USER_LIST_URL":"/api/user/allUser",
+    "USER_INFO_URL":"/api/user/userInfo",
+    "USER_ADD_BODY_URL":"/api/user/addBody",
 }
 
 function post(key, data, cb) {

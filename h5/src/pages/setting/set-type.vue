@@ -13,17 +13,6 @@
                 <span slot="right" v-on:click="onDel(item)">删除</span>
             </van-cell-swipe>
         </template>
-
-
-
-        <van-popup v-model="popup_show" position="bottom">
-            <div style="height:300px; text-align:center;">
-            <van-cell-group style="margin-top:50px;">
-                <van-field v-model="add_type_name" label="训练类型" icon="clear" placeholder="有氧训练/力量训练/热身运动" required @click-icon="username = ''" />
-            </van-cell-group>
-            <van-button type="default" style="margin-top:30px;width:60%">保存</van-button>
-            </div>
-        </van-popup>
     </div>
 </template>
 
@@ -31,15 +20,13 @@
 <script>
     import { Dialog } from 'vant';
     import "@/assets/css/index.css"
+    import bus from '../../components/Bus'
 
     export default {
         data() {
             return {
                 parent_id: 0,
                 list: null,
-
-                popup_show: false,
-                add_type_name:'',
             };
         },
         methods: {
@@ -47,7 +34,7 @@
                 this.$router.back();
             },
             onClickRight() {
-                this.popup_show=true;
+                this.$router.push({ path: "/add-type", query: { parent_id: this.parent_id, title: '添加类型' } });
             },
             onDel(item) {
                 var self = this;
@@ -66,10 +53,22 @@
             }
         },
         mounted() {
+            listenEvent(this);
+
             loadData(this);
         }
     }
 
+    function listenEvent(self) {
+        bus.$on("close-add-type", function (data) {
+            if (data) {
+                if (data.is_refresh == true) {
+                    //刷新数据
+                    loadData(self);
+                }
+            }
+        });
+    }
     //删除数据节点
     function delList(self, id) {
         for (var i = 0; i < self.list.length; i++) {
@@ -91,6 +90,19 @@
             if (code == 200) {
                 //删除数据
                 delList(self, id);
+            }
+        });
+    }
+
+    //添加事件
+    function saveData(self) {
+        self.$api.post("ADD_SYS_TYPE_URL", { parent_id: self.parent_id, name: self.value }, function (code, message, info) {
+            if (code == 200) {
+                //关闭界面
+                if (self.modal) {
+                    self.modal.hide();
+                }
+
             }
         });
     }
